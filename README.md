@@ -1,1 +1,1 @@
-# warfira
+# warfira-app
