@@ -187,7 +187,6 @@ return [
          */
         App\Providers\FortifyServiceProvider::class,
 
-
         /*
          * Application Service Providers...
          */

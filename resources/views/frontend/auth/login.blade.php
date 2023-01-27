@@ -32,16 +32,33 @@
                             <h4>Gérez et consultez à tout moment vos différents billets et hôtels reservés sur Warfira.</h4>
                         </div>
                         <div class="common_author_form">
-                            <form action="#" id="main_author_form">
+                            <form action="{{ route('login') }}" method="POST" id="main_author_form">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Votre adresse mail" />
+                                    <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" placeholder="Votre adresse email" />
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Mot de passe" />
-                                    <a href="forgot-password.html">Mot de passe oublié ?</a>
+                                    <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" autocomplete="current-password" placeholder="Mot de passe"/>
+                                    @error('password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                    <div style="text-align: left;"  class="form-check write_spical_check">
+                                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                        <label class="form-check-label" for="remember">
+                                            Se souvenir de moi
+                                        </label>
+                                    </div>
+                                    @if (Route::has('password.request'))
+                                        <a style="float:right;" href="#">
+                                            {{ __('Mot de passe oublié ?') }}
+                                        </a>
+                                    @endif
                                 </div>
                                 <div class="common_form_submit">
-                                    <button class="btn btn_theme btn_md">Se connecter</button>
+                                    <button type="submit" class="btn btn_theme btn_md">Se connecter</button>
                                     <br>
                                 </div>
 

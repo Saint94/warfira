@@ -24,4 +24,6 @@
 <!-- END APEX CSS-->
 <!-- BEGIN Page Level CSS-->
 <!-- END Page Level CSS-->
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
 

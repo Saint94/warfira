@@ -43,19 +43,43 @@
                         </div>
 
                         <div class="common_author_form">
-                            <form action="#" id="main_author_form">
+                            <form action="{{ route('creer-compte.store') }}" method="POST" id="main_author_form">
+                                @csrf
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="+237 699 66 44 55" />
+                                    <input type="text" id="name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" placeholder="Nom(s) et Pr&eacute;nom(s)"/>
+                                    @error('name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control"
-                                        placeholder="magni@warfira.com" />
+                                    <input type="text" id="tel" class="form-control @error('tel') is-invalid @enderror" name="tel" value="{{ old('tel') }}" placeholder="+237 699 66 44 55"/>
+                                    @error('tel')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="********************" />
+                                    <input type="email" id="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="magni@warfira.com"/>
+                                    @error('email')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
+                                <div class="form-group">
+                                    <input type="password" id="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" placeholder="********************"/>
+                                    @error('password')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-check write_spical_check">
+                                    <input class="form-check-input" type="checkbox" name="condition_generale" id="condition_generale">
+                                    <label class="form-check-label" for="condition_generale">
+                                        J'accepte les termes et les <a href="#">conditions d'utilisation</a>
+                                    </label>
+                                </div>
+
+                                <div class="checkbox_false" style="display: none;"></div>
+
                                 <div class="common_form_submit">
-                                    <button class="btn btn_theme btn_md">Créer un compte</button>
+                                    <button type="submit" class="btn btn_theme btn_md btn_creer_compte">Créer un compte</button>
                                 </div>
                                 <div class="have_acount_area other_author_option">
                                     <p>Vous avez déjà un compte ? <a href="{{ route('login') }}">Connectez-vous</a></p>
@@ -67,6 +91,48 @@
             </div>
         </div>
     </section>
+
+@endsection
+
+@section('add_scripts')
+
+    <script type="text/javascript">
+        /*$(document).ready(function() {
+
+            $("input[name='condition_generale']").change(function()
+             {
+                var objet=$(".btn_creer_compte");
+                 if($(this).prop("checked")==true)
+                   {
+                     objet.removeAttr("disabled");
+                    }
+                   else{
+                   objet.attr("disabled",true);
+                 }
+
+             });
+
+
+            if($("input[name='condition_generale']:checked").prop("checked")==true)
+            {
+                var objet=$(".btn_creer_compte");
+                objet.removeAttr("disabled");
+            }
+            else
+            {
+            objet.attr("disabled",true);
+            }
+
+            var checkbox=$("input[name='condition_generale']");
+
+            if(!checkbox.prop('checked'))
+                $(".checkbox_false").append("<input type='text' value='false' name='condition_generale' >");
+            else
+                $("input[name='condition_generale']").val(true);
+
+        });*/
+    </script>
+
 
 @endsection
 

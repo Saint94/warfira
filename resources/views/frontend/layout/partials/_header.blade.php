@@ -17,10 +17,15 @@
                 </div>
                 <div class="col-lg-6 col-md-6">
                     <ul class="topbar-others-options">
-                        <li><a href="{{ route('login') }}">{{ __("S'identifier") }}</a></li>
-                        @if (Route::has('register'))
-                            <li><a href="{{ route('register') }}">{{ __("Créer un compte") }}</a></li>
-                        @endif
+                        @auth
+                            <li><a href="{{ url('/home') }}">{{ __("Mon compte") }}</a></li>
+                        @else
+                            <li><a href="{{ route('login') }}">{{ __("S'identifier") }}</a></li>
+                            @if (Route::has('register'))
+                                <li><a href="{{ route('register') }}">{{ __("Créer un compte") }}</a></li>
+                            @endif
+                        @endauth
+
                         <li>
                             <div class="dropdown language-option">
                                 <button class="dropdown-toggle" type="button" data-bs-toggle="dropdown"
@@ -62,7 +67,7 @@
                 <div class="main-responsive-menu">
                     <div class="logo">
                         <a href="{{ route('/') }}">
-                            <img src="{{asset('assets_frontend/img/logo-warfira.png')}}" alt="logo">
+                            <img src="{{ asset('assets_frontend/img/logo-warfira.png') }}" alt="logo">
                         </a>
                     </div>
                 </div>
@@ -72,7 +77,7 @@
             <div class="container">
                 <nav class="navbar navbar-expand-md navbar-light">
                     <a class="navbar-brand" href="{{ route('/') }}">
-                        <img src="{{asset('assets_frontend/img/logo-warfira.png')}}" alt="logo">
+                        <img src="{{ asset('assets_frontend/img/logo-warfira.png') }}" alt="logo">
                     </a>
                     <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                         <ul class="navbar-nav">
@@ -81,19 +86,19 @@
                                     <a href="{{ route('/') }}" class="nav-link">{{ __("Accueil") }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="contact.html" class="nav-link">{{ __("Vols") }}</a>
+                                    <a href="#" class="nav-link">{{ __("Vols") }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="contact.html" class="nav-link">{{ __("Hôtels") }}</a>
+                                    <a href="#" class="nav-link">{{ __("Hôtels") }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="contact.html" class="nav-link">{{ __("Voitures") }}</a>
+                                    <a href="#" class="nav-link">{{ __("Voitures") }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="contact.html" class="nav-link">{{ __("Séjour") }}</a>
+                                    <a href="#" class="nav-link">{{ __("Séjour") }}</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="contact.html" class="nav-link">{{ __("Contactez nous") }}</a>
+                                    <a href="#" class="nav-link">{{ __("Contactez nous") }}</a>
                                 </li>
                                 <li class="nav-item {{ set_active_route('contact.index') }}">
                                     <a href="{{ route('contact.index') }}" class="nav-link">{{ __("Autres services") }}</a>
@@ -105,7 +110,7 @@
                         </ul>
                         <div class="others-options d-flex align-items-center">
                             <div class="option-item">
-                                <a href="become-vendor.html" class="btn  btn_navber">Devenir partenaire</a>
+                                <a href="#" class="btn  btn_navber">Devenir partenaire</a>
                             </div>
                         </div>
                     </div>
