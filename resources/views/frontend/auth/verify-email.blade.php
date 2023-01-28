@@ -1,6 +1,6 @@
 @extends('frontend.layout.app')
 
-@section('title', "Activé mon compte")
+@section('title', "Vérifier votre adresse email")
 
 @section('content')
 
@@ -10,10 +10,10 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="common_bannner_text">
-                            <h2>Activé mon compte</h2>
+                            <h2>Vérifier votre adresse email</h2>
                             <ul>
                                 <li><a href="{{ route('/') }}">Accueil</a></li>
-                                <li><span><i class="fas fa-circle"></i></span>Activé mon compte</li>
+                                <li><span><i class="fas fa-circle"></i></span>Vérifier votre adresse email</li>
                             </ul>
                         </div>
                     </div>
@@ -28,20 +28,22 @@
                     <div class="col-lg-8 offset-lg-2">
                         <div class="common_author_boxed">
                             <div class="common_author_heading">
-                                <h2>Vous devez verifier votre boite mails afin d'activer votre compte</h2>
+                                <h3>Avant de poursuivre, veuillez vérifier votre email pour un lien de vérification.</h3>
                             </div>
-                            <div class="common_author_form">
+
+                            <div class="">
 
                                 @if (session('status') == 'verification-link-sent')
-                                    <div class="alert alert-success my-3">
-                                        Un nouveau mail à vient d'être envoyé dans votre boite mails !
+                                    <div style="text-align: center" class="alert alert-success alert-dismissible mb-2" role="alert">
+                                        <strong>Un nouveau lien de vérification a été envoyé à votre adresse email.</strong>
                                     </div>
                                 @endif
+
 
                                 <form method="POST" action="/email/verification-notification" id="main_author_form">
                                     @csrf
                                     <div class="common_form_submit">
-                                        <button type="submit" class="btn btn_theme btn_md">Cliquer ici pour envoyer à nouveau</button>
+                                        <button type="submit" class="btn btn_theme btn_md">cliquez ici pour en demander un autre</button>
                                     </div>
                                 </form>
                             </div>

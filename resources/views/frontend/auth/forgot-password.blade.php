@@ -33,10 +33,11 @@
                             <div class="common_author_form">
 
                                 @if (session('status'))
-                                    <div class="alert alert-success my-3">
-                                        {{ session('status') }}
+                                    <div style="text-align: center" class="alert alert-success">
+                                        <strong>{{ session('status') }}</strong>
                                     </div>
                                 @endif
+
 
                                 <form method="POST" action="/forgot-password" id="main_author_form">
                                     @csrf

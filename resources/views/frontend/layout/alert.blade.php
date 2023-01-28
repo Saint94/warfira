@@ -3,7 +3,7 @@
     <div class="alert alert-success alert-dismissible mb-2">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4><i class="icon"></i>{{session('title')}}</h4>
-        {{session('notification')}}
+        {{session('alert')}}
     </div>
 @endif
 
@@ -12,6 +12,6 @@
     <div class="alert alert-danger alert-dismissible mb-2">
         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
         <h4><i class="icon"></i> {{session('title')}}</h4>
-        {{session('notification-error')}}
+        {{session('alert-error')}}
     </div>
 @endif
