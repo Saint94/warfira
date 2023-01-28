@@ -44,24 +44,28 @@ class FortifyServiceProvider extends ServiceProvider
             return Limit::perMinute(5)->by($request->session()->get('login.id'));
         });
 
+        //Login View
         Fortify::loginView(function () {
             return view('frontend.auth.login');
         });
 
+        //Register View
         Fortify::registerView(function () {
             return view('frontend.auth.register');
         });
 
+        //Forgot password View
         Fortify::requestPasswordResetLinkView(function () {
-            return view('frontend.auth.passwords.forgot-password');
+            return view('frontend.auth.forgot-password');
         });
 
+        //reset password View
         Fortify::resetPasswordView(function ($request) {
-            return view('auth.reset-password', ['request' => $request]);
+            return view('frontend.auth.reset-password', ['request' => $request]);
         });
 
         Fortify::verifyEmailView(function () {
-            return view('auth.verify-email');
+            return view('frontend.auth.verify-email');
         });
 
         Fortify::confirmPasswordView(function () {
@@ -70,7 +74,6 @@ class FortifyServiceProvider extends ServiceProvider
 
         Fortify::authenticateUsing(function (Request $request) {
             $user = User::where('email', $request->email)->first();
-
             if ($user &&
                 Hash::check($request->password, $user->password)) {
                 return $user;
