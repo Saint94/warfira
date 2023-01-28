@@ -46,15 +46,11 @@ Route::get('/', function () {
 
 
 
-Route::get('/', function () {
-    return view('frontend.accueil');
-})->name('/');
-
 Route::group(['middleware' => ['web','auth','verified']], function () {
 
     Route::get('/home', function () {
         return view('frontend.dashboard.index');
-    })->name('/');
+    })->name('/home');
 
     Route::get('/mon-profil', [DashboardController::class, 'profil'])->name('mon-profil.index');
     Route::put('/update-mon-profil/{id}', [DashboardController::class, 'updateProfil'])->name('mon-profil.update');
